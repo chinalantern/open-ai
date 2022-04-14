@@ -11,20 +11,23 @@ import * as random from 'maath/random/dist/maath-random.esm'
 import { AmbientLight } from 'three'
 
 import Mask from '../../../components/objects3D/mask3d'
+import Wireframe from '../../../components/objects3D/wireframe3D'
+import BentPlanes from '../../../components/objects3D/BentPlaneShapes'
+import AbstractShapes from '../../../components/objects3D/AbstractShapes'
 
 export const Mask3D = () => {
   return (
-    <div style={{ position: 'relative', width: 600, height: 600 }}>
+    <div style={{ position: 'relative', width: 700, height: 700 }}>
       <Canvas camera={{ fov: 25, position: [0, 0, 8] }}>
-        <ambientLight intensity={0.75} />
+        <ambientLight intensity={0.30} />
         {/* Left light */}
-        <pointLight color="#FF6619" position={[-10, 0, -20]} intensity={0.05} />
+        <pointLight color="#FF6619" position={[-10, 0, -15]} intensity={0.5} />
         {/* Bottom Light */}
-        <pointLight position={[0, -10, 0]} intensity={1.0} />
-        {/* Bottom Top */}
-        <pointLight position={[0, 5, 0]} intensity={0.2} />
+        <pointLight position={[0, -10, 0]} intensity={0.6} />
+        {/* Top Light */}
+        <pointLight color="#66CCFF" position={[0, 5, 0]} intensity={0.4} />
         {/* Right Light */}
-        <pointLight color="#0B2F57" position={[10, 0, 0]} intensity={2.5} />
+        <pointLight color="#FFFF99" position={[1, 0, 0]} intensity={.5} />
         {/* CAMERA CONTROLLER */}
         <PresentationControls
           global
@@ -35,7 +38,10 @@ export const Mask3D = () => {
           azimuth={[-Math.PI / 10, Math.PI / 10]}
         >
           <group position-y={0} dispose={null}>
+            <Wireframe />
             <Mask />
+            <BentPlanes />
+            <AbstractShapes />
             <Stars />
           </group>
         </PresentationControls>
@@ -47,15 +53,14 @@ export const Mask3D = () => {
 function Stars(props) {
   const ref = useRef()
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.5 })
+    random.inSphere(new Float32Array(3000), { radius: 6 })
   )
-
   useFrame((state, delta) => {
-    // ref.current.rotation.x -= delta / 10
-    // ref.current.rotation.y -= delta / 15
+    ref.current.rotation.x -= delta / 50
+    ref.current.rotation.y -= delta / 55
   })
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
+    <group position-z={7} rotation={[0, 0, Math.PI / 4]}>
       <Points
         ref={ref}
         positions={sphere}
@@ -66,7 +71,7 @@ function Stars(props) {
         <PointMaterial
           transparent
           color="#ffa0e0"
-          size={0.005}
+          size={0.03}
           sizeAttenuation={true}
           depthWrite={false}
         />

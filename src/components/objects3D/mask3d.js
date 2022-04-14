@@ -24,7 +24,14 @@ export default function Mask(props) {
           receiveShadow
           geometry={nodes.Object_8.geometry}
           material={materials['Material.006']}
-        />
+        >
+          <meshStandardMaterial
+            color="#006699"
+            roughness={0.6}
+            opacity={0.2}
+            transparent={false}
+          />
+        </mesh>
       </group>
     </group>
   )

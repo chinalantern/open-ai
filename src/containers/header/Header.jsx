@@ -4,7 +4,7 @@ import './Header.css'
 import people from '../../assets/people.png'
 import ai from '../../assets/ai.png'
 
-import {Mask3D} from './3Dcomponents/3DMask'
+import { Mask3D } from './3Dcomponents/3DMask'
 
 const Header = () => {
   return (
@@ -30,16 +30,12 @@ const Header = () => {
           <p>1,600 people requested access a visit in last 24 hours</p>
         </div>
       </div>
-      <Mask3D />
+      <div className="gpt3__header-image">
+      <Mask3D  />
 
-     </div>
+      </div>
+    </div>
   )
 }
 
 export default Header
-
-
-
-      // <div className="gpt3__header-image">
-      //   <img src={ai} alt="ai" />
-      // </div>
