@@ -13,7 +13,7 @@ const featuresData = [
   },
   {
     title: 'Message or am nothing',
-    text: 'Really boy law county she unable her sister. Feet you off its like like six. Among sex are leave law built now. In built table in an rapid blush.',
+    text: 'Really boy law county she unable her sister. Feet you off its like like six. Among leave law built now. In built table in an rapid blush.',
   },
   {
     title: 'Really country bumpkin here',
